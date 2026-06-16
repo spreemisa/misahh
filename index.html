@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>王者英雄消消乐 Web App</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23091026'/%3E%3Cpath d='M32 8l7 16h17L42 34l6 18-16-11-16 11 6-18L8 24h17z' fill='%23f4c86a'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell" aria-label="王者英雄消消乐 Web App">
+      <section class="play-surface">
+        <header class="topbar">
+          <div>
+            <h1>王者英雄消消乐</h1>
+            <p>拖动相邻英雄头像交换，横向或纵向 3 个及以上相同英雄自动消除。</p>
+          </div>
+          <div class="stats" aria-label="游戏数据">
+            <div class="stat">
+              <span>分数</span>
+              <strong data-score>0</strong>
+            </div>
+            <div class="stat">
+              <span>步数</span>
+              <strong data-moves>30</strong>
+            </div>
+            <div class="stat">
+              <span>连消</span>
+              <strong data-combo>0</strong>
+            </div>
+          </div>
+        </header>
+
+        <div class="board-frame">
+          <div class="board-status" data-status>准备开始</div>
+          <div class="board" data-board aria-label="7乘7英雄消除棋盘"></div>
+          <div class="combo-toast" data-toast>消除 +3</div>
+        </div>
+      </section>
+
+      <aside class="side-panel">
+        <section class="mission panel-block">
+          <h2>任务目标</h2>
+          <div class="target-card">
+            <img data-target-img alt="" />
+            <div>
+              <span>收集指定英雄头像</span>
+              <strong data-target-name>目标英雄</strong>
+              <em><b data-target-left>18</b> / 18</em>
+            </div>
+          </div>
+        </section>
+
+        <section class="tools panel-block" aria-label="技能道具">
+          <h2>技能道具</h2>
+          <div class="tool-grid">
+            <button type="button" data-action="hint" title="提示可消除交换">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-4 12.74V17h8v-2.26A7 7 0 0 0 12 2Zm-3 18h6m-5 2h4" /></svg>
+              提示
+            </button>
+            <button type="button" data-action="shuffle" title="重排棋盘">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3h5v5M4 20l6.5-6.5M21 3l-7 7M4 4l16 16M16 20h5v-5" /></svg>
+              重排
+            </button>
+            <button type="button" data-action="blast" title="消除中心同类英雄">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m13 2-2 8H5l5 4-2 8 6-5 6 5-2-8 5-4h-6l-4-8Z" /></svg>
+              斩击
+            </button>
+          </div>
+        </section>
+
+        <section class="panel-block">
+          <button class="restart" type="button" data-action="restart">重新开始</button>
+        </section>
+
+        <section class="battle-log panel-block">
+          <h2>战斗记录</h2>
+          <div data-log>载入英雄头像中...</div>
+        </section>
+
+        <section class="rules panel-block">
+          <h2>测试要点</h2>
+          <ol>
+            <li>初始棋盘不生成天然三连。</li>
+            <li>只能与上下左右相邻头像交换。</li>
+            <li>有效交换会扣除 1 步并计分。</li>
+            <li>消除后头像下落并自动补位。</li>
+          </ol>
+        </section>
+      </aside>
+    </main>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
